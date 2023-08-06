@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<center>
+  <header>
+    <h1>CART DETAILS</h1>
+  </header>
+  
+  <div class="container" id="cartdiv"></div>
+
+  <script>
+    
+  var dataToPass = localStorage.getItem("cartdata");
+  var parsedData = JSON.parse(dataToPass);
+  var total_items = parsedData.length;
+  
+  
+  
+  
+  var cart = document.createElement("div");
+  for (var i = 0; i < total_items; i++) {
+  	var productImage = document.createElement("img");
+  	productImage.src = parsedData[i].Image;
+  	var productName = document.createElement("p");
+  	productName.textContent = parsedData[i].product_name;
+  	var productType = document.createElement("p");
+  	productType.textContent = parsedData[i].product_type;
+  	var productPrice = document.createElement("p");
+  	productPrice.textContent = "Price: $" + parsedData[i].product_price.toFixed(2);
+
+  cart.appendChild(productImage);
+  cart.appendChild(productName);
+  cart.appendChild(productType);
+  cart.appendChild(productPrice);
+  
+}
+
+document.getElementById("cartdiv").appendChild(cart);
+</script>
+</body>
+</html>

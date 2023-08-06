@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Details</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<center>
+  <header>
+    <h1>Product Details</h1>
+  </header>
+
+  <div class="container">
+    <div class="product-card">
+      <img src="" alt="Product Image" id="productImage">
+      <div class="product-name" id="productName"></div>
+      <div class="product-type" id="productType"></div>
+      <div class="product-price" id="productPrice"></div>
+      <button class="btn btn-primary">Add to cart</button>
+      <button class="btn btn-success">Buy Now</button>
+    </div>
+  </div>
+  </center>
+
+  <script>
+    var dataToPass = localStorage.getItem("product_data");
+    if (dataToPass) {
+      var parsedData = JSON.parse(dataToPass);
+      document.getElementById('productImage').src = parsedData.Image;
+      document.getElementById('productName').textContent = parsedData.product_name;
+      document.getElementById('productType').textContent = parsedData.product_type;
+      document.getElementById('productPrice').textContent = "Price: $" + parsedData.product_price.toFixed(2);
+    }
+  </script>
+</body>
+</html>
